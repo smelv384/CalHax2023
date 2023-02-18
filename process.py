@@ -1,10 +1,14 @@
 import scraper
 
 room, time = scraper.scraper.web()
+daysAndTime = time.split(" ", 1)
 
-def getDay():
+def getRoom():
+    return room
+
+def getDays():
     d = list()
-    days = time.split(" ", 1)
+    days = daysAndTime[0]
     for i in range(0, len(days)):
         if days[i] == 'M':
             d.append("Monday")
@@ -17,3 +21,13 @@ def getDay():
         else:
             d.append("Friday")
     return d
+
+def getBeginTime():
+    t = list()
+    timee = daysAndTime[1].split(" - ")
+    return timee[0]
+
+def getEndTime():
+    t = list()
+    timee = daysAndTime[1].split(" - ")
+    return timee[1]
