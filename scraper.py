@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+
+
 # Author: Shaemus Melvin
 # Takes in the course list url, outputs the list of rooms and times taken according to the course list
 def scrape_web(URL):
@@ -21,6 +23,11 @@ def scrape_web(URL):
         print(time.text)
 
     return rooms, times
+
+def printClass(rooms, times):
+    for i in range(0, len(rooms)):
+        print(rooms[i])
+        print(times[i])
 
 
 rooms, times = scrape_web("https://contacts.ucalgary.ca/info/cpsc/courses")
