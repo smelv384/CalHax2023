@@ -3,7 +3,7 @@ from datetime import time
 rooms, times = scraper.scrape_web("https://contacts.ucalgary.ca/info/cpsc/courses")
 
 # Authors: Shaemus Melvin, Harry Lee
-# Takes two arrays of rooms and times/dates, 
+# Takes two arrays of rooms and times/dates, converts them into an array of objects
 
 def getRoom():
     return room
