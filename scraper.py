@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-def scrape_web():
+# Author: Shaemus Melvin
+# Takes in the course list url, outputs the list of rooms and times taken according to the course list
+def scrape_web(URL):
     rooms = []
     times = []
-    URL = "https://contacts.ucalgary.ca/info/cpsc/courses"
     page = requests.get(URL)
 
     soup = BeautifulSoup(page.content, "html.parser")
@@ -18,9 +19,8 @@ def scrape_web():
         time = item.find("td", style="width:11em")
         times.append(time.text)
         print(time.text)
-    
-    for i in range(0, len(rooms)):
-        print(rooms[i])
-        print(times[i])
 
     return rooms, times
+
+
+rooms, times = scrape_web("https://contacts.ucalgary.ca/info/cpsc/courses")
