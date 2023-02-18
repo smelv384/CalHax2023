@@ -1,7 +1,7 @@
 import scraper
-
-room, time = scraper.scraper.web()
-daysAndTime = time.split(" ", 1)
+from datetime import time
+room, tim = scraper.scraper.web()
+daysAndTime = tim.split(" ", 1)
 
 def getRoom():
     return room
@@ -24,10 +24,20 @@ def getDays():
 
 def getBeginTime():
     t = list()
-    timee = daysAndTime[1].split(" - ")
-    return timee[0]
+    time = daysAndTime[1].split(" - ")
+    return time[0]
 
 def getEndTime():
     t = list()
-    timee = daysAndTime[1].split(" - ")
-    return timee[1]
+    time = daysAndTime[1].split(" - ")
+    return time[1]
+
+def getBeginTimeInTimeObject():
+    timeString = getBeginTime()
+    tim = timeString.split(':')
+    timee = time(hour = tim[0], minute = tim[1])
+
+def getEndTimeInTimeObject():
+    timeString = getEndTime()
+    tim = timeString.split(':')
+    timee = time(hour = tim[0], minute = tim[1])
