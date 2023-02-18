@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 def scrape_web():
+    rooms = []
+    times = []
     URL = "https://contacts.ucalgary.ca/info/cpsc/courses"
     page = requests.get(URL)
 
@@ -10,7 +12,15 @@ def scrape_web():
     table = soup.find("div", class_="unitis-course-list")
     list_items = table.findAll("tr", class_="collapsed primary-row collapsed-primary-row")
     for item in list_items:
-        
-        print(item.prettify())
-        
-scrape_web()
+        room = item.find("td", style="width:6em")
+        print(room.text)
+        rooms.append(room.text)
+        time = item.find("td", style="width:11em")
+        times.append(time.text)
+        print(time.text)
+    
+    for i in range(0, len(rooms)):
+        print(rooms[i])
+        print(times[i])
+
+    return rooms, times
