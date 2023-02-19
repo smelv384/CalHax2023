@@ -11,7 +11,6 @@ def scrape_web(URL):
     page = requests.get(URL)
 
     soup = BeautifulSoup(page.content, "html.parser")
-
     table = soup.findAll("div", class_="item-list")
     for list_items in table:
         for item in list_items:
