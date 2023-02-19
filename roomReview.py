@@ -11,7 +11,7 @@ def chooseRoomToRateAndReview(room):
 def rate():
     userScore = input("Please rate the quality of your rest in the room out of 5!: ")
     if userScore > 5 or userScore < 1:
-        print("Please enter a valid number")
+        print("Please enter a valid number.")
     else:
         score[pickedRoom] = list()
         score[pickedRoom].append(userScore)
