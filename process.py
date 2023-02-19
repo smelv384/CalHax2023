@@ -1,7 +1,8 @@
 import scraper
 from datetime import time
-rooms, times = scraper.scrape_web("https://contacts.ucalgary.ca/info/cpsc/courses")
+import pandas as pd
 
+rooms, times = scraper.scrape_web("https://contacts.ucalgary.ca/info/cpsc/courses")
 # Authors: Shaemus Melvin, Harry Lee
 # Takes two arrays of rooms and times/dates, 
 
@@ -41,6 +42,19 @@ def getEndTimeInTimeObject(roomTime):
     tim = timeString.split(':')
     return time(hour = int(tim[0]), minute = int(tim[1]))
 
+class Day:
+    def booking_to_timelists(self):
+        pd.date_range(start='2023-02-19', end='2023-02-25', freq='1D')
+        # date + start_time
+        # date + end_time
+        # df['TDate'] +=  pd.to_timedelta(df.Hour, unit='h')
+        # print (df)
+        t1 = pd.to_datetime('2023-02-19 08:00:00')
+        t2 = pd.to_datetime('2023-02-19 21:00:00')
+        #t3 = pd.to_datetime('2023-02-25 00:00:00')
+        series = pd.date_range(t1,t2,freq='15min')
+        iso8601 = [t.strftime('%Y%m%dT%H:%M%SZ') for t in series]
+        return iso8601
 
 class Booking:
     building = ""
