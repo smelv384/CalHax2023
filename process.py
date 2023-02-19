@@ -53,7 +53,6 @@ class Booking:
     def __init__(self, room, roomTime):
         if (room != "TBA" and roomTime != "TBA"):
             self.building = room.split()[0]
-            print(room)
             if (room.split()[1].isdigit()):
                 self.floor = (room.split())[1][0]
                 self.roomNumber = room.split()[1][1:]
@@ -66,15 +65,14 @@ class Booking:
         return
     
 def prettyPrint(booking):
-    output = ""
-    output += ((booking.building) + "\n")
-    output += ((str(booking.floor)) + "\n")
-    output += ((str(booking.roomNumber)) + "\n")
+    print(booking.building)
+    print(booking.floor)
+    print(booking.roomNumber)
     for day in booking.days:
-        output += ((day) + "\n")
-    output += ((str(booking.startTime)) + "\n")
-    output += ((str(booking.endTime)) + "\n")
-    return output
+        print(day)
+    print(booking.startTime)
+    print(booking.endTime)
+    return
 
 def getBookings():
     bookings = []
@@ -102,5 +100,3 @@ def user_booking_overlap(user_booking: Booking):
             if has_overlap(user_booking, classbooking):
                 return True
     return False
-
-# getBookings()
