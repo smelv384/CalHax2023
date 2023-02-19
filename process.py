@@ -53,6 +53,7 @@ class Booking:
     def __init__(self, room, roomTime):
         if (room != "TBA" and roomTime != "TBA"):
             self.building = room.split()[0]
+            print(room)
             if (room.split()[1].isdigit()):
                 self.floor = (room.split())[1][0]
                 self.roomNumber = room.split()[1][1:]
@@ -65,14 +66,15 @@ class Booking:
         return
     
 def prettyPrint(booking):
-    print(booking.building)
-    print(booking.floor)
-    print(booking.roomNumber)
+    output = ""
+    output += ((booking.building) + "\n")
+    output += ((str(booking.floor)) + "\n")
+    output += ((str(booking.roomNumber)) + "\n")
     for day in booking.days:
-        print(day)
-    print(booking.startTime)
-    print(booking.endTime)
-    return
+        output += ((day) + "\n")
+    output += ((str(booking.startTime)) + "\n")
+    output += ((str(booking.endTime)) + "\n")
+    return output
 
 def getBookings():
     bookings = []
@@ -80,5 +82,9 @@ def getBookings():
         if (rooms[i] != "TBA" and times[i] != "TBA"):
             newBooking = Booking(rooms[i], times[i])
             bookings.append(newBooking)
+            prettyPrint(newBooking)
 
     return bookings
+
+
+# getBookings()
