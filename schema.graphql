@@ -1,0 +1,29 @@
+schema {
+    query: Query
+}
+
+type Booking {
+    building: String
+    floor: Int
+    roomNumber: Int
+    startTime: String
+    endTime: String
+    id: Int
+}
+
+type BookingResult {
+    success: Boolean!
+    errors: [String]
+    booking: Booking
+}
+
+type BookingsResult {
+    success: Boolean!
+    errors: [String]
+    booking: [Booking]
+}
+
+type Query {
+    listBookings: BookingsResult!
+    getBooking(id: ID!): BookingResult!
+}
